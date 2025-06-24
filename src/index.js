@@ -24,6 +24,11 @@ app.use('/api/auth', authRoutes);
 app.use('/api/applications', auth, applicationRoutes);
 app.use('/api/admin', auth, adminRoutes);
 
+// Health endpoint
+app.get('/health', (req, res) => {
+  res.json({ message: 'Server is running!' });
+});
+
 // Error handling middleware
 app.use((err, req, res, next) => {
   console.error(err.stack);
