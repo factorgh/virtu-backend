@@ -4,17 +4,18 @@ import jwt from "jsonwebtoken";
 
 import { auth } from "../middleware/auth.js";
 
-import rateLimit from "express-rate-limit";
+
 import User from "../models/User.js";
+import Application from "../models/Application.js";
 
 const router = express.Router();
 
-// Rate limiting for login attempts
-const loginLimiter = rateLimit({
-  windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 5, // limit each IP to 5 login attempts per windowMs
-  message: "Too many login attempts. Please try again later.",
-});
+// // Rate limiting for login attempts
+// const loginLimiter = rateLimit({
+//   windowMs: 15 * 60 * 1000, // 15 minutes
+//   max: 5, // limit each IP to 5 login attempts per windowMs
+//   message: "Too many login attempts. Please try again later.",
+// });
 
 // Admin registration
 router.post("/register", async (req, res) => {
@@ -70,7 +71,7 @@ router.post("/register", async (req, res) => {
 });
 
 // Admin login
-router.post("/login", loginLimiter, async (req, res) => {
+router.post("/login", async (req, res) => {
   try {
     const { name, password } = req.body;
 
