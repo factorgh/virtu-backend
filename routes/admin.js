@@ -10,13 +10,6 @@ import Application from "../models/Application.js";
 
 const router = express.Router();
 
-// // Rate limiting for login attempts
-// const loginLimiter = rateLimit({
-//   windowMs: 15 * 60 * 1000, // 15 minutes
-//   max: 5, // limit each IP to 5 login attempts per windowMs
-//   message: "Too many login attempts. Please try again later.",
-// });
-
 // Admin registration
 router.post("/register", async (req, res) => {
   try {
@@ -125,7 +118,7 @@ router.post("/login", async (req, res) => {
       },
     });
   } catch (err) {
-    console.error(err.message);
+    console.log(err.message);
     res.status(500).json({
       message: "Server error",
       code: "SERVER_ERROR",
