@@ -40,11 +40,8 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/virtu-pro
   .then(() => {
     console.log('Connected to MongoDB');
     
-    // Start server
-    const PORT = process.env.PORT || 5000;
-    app.listen(PORT, () => {
-      console.log(`Server is running on port ${PORT}`);
-    });
+    // Server will be started by Vercel automatically
+    console.log('Server initialized');
   })
   .catch((err) => {
     console.error('MongoDB connection error:', err);
