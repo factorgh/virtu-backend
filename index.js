@@ -15,6 +15,7 @@ import adminRoutes from './routes/admin.js';
 
 const app = express();
 
+app.set('trust proxy', 1);
 // Middleware
 app.use(express.json());
 app.use(cors());
@@ -38,7 +39,7 @@ app.use((err, req, res, next) => {
 });
 
 // MongoDB connection
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/virtu-pro')
+mongoose.connect(process.env.MONGODB_URI)
   .then(() => {
     console.log('✅ Connected to MongoDB');
 
